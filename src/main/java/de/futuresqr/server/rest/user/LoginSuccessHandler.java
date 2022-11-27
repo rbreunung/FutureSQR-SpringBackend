@@ -24,7 +24,6 @@
 package de.futuresqr.server.rest.user;
 
 import java.io.IOException;
-import java.security.Principal;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
