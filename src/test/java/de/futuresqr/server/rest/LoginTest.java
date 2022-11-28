@@ -34,7 +34,6 @@ import java.net.HttpCookie;
 import java.net.URI;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -110,10 +109,10 @@ public class LoginTest {
 
 	/**
 	 * This test uses the CSRF token from a controller header. This use case used to
-	 * work in Spring Boot 2.
+	 * work in Spring Boot 2. THis use case is relevant, as it represents the
+	 * Angular behavior.
 	 */
 	@Test
-	@Disabled("The CSRF filter providing an CSRF token as header, is currently not providing an valid value.")
 	void postAuthenticate_validRequestUsingHeaderCsrf_userDto() {
 
 		// get CSRF

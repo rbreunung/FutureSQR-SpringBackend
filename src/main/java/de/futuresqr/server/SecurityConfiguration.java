@@ -33,6 +33,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 
 import de.futuresqr.server.rest.user.LoginSuccessHandler;
 
@@ -64,7 +65,11 @@ public class SecurityConfiguration {
 		http.formLogin().loginProcessingUrl(PATH_REST_AUTHENTICATE).successHandler(new LoginSuccessHandler());
 		http.userDetailsService(getUserDetails());
 		// CSRF configuration for Angular
-		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+		// compatibility solution from migration guide
+		// https://docs.spring.io/spring-security/reference/5.8/migration/servlet/exploits.html#_i_am_using_angularjs_or_another_javascript_framework
+		CsrfTokenRequestAttributeHandler delegate = new CsrfTokenRequestAttributeHandler();
+		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+				.csrfTokenRequestHandler(delegate::handle);
 		// enable remember-me
 		http.rememberMe().alwaysRemember(true);
 		return http.build();
