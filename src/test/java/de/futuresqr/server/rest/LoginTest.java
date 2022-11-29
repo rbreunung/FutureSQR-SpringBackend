@@ -97,7 +97,7 @@ public class LoginTest {
 		log.info("found {} new cookies: {}", newLoginCookies.size(), newLoginCookies);
 
 		// custom login success handler sends status 200.
-		assertTrue(responseEntity.getStatusCode().equals(OK), "Expect successful login.");
+		assertEquals(OK, responseEntity.getStatusCode(), "Expect successful login.");
 		assertTrue(newLoginCookies.size() > 0, "New session cookies must be set.");
 	}
 
