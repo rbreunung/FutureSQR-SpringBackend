@@ -32,12 +32,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * This class creates the response to the client on successful authentication.
  */
-@Slf4j
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Override

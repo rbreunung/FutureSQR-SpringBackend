@@ -25,23 +25,18 @@ package de.futuresqr.server.rest.user;
 
 import static de.futuresqr.server.SecurityConfiguration.PATH_REST_CSRF;
 
-import java.io.IOException;
-
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.servlet.ServletException;
-
 /**
- * This controller provides a XOR CSRF token belonging to the current
- * session.
+ * This controller provides a XOR CSRF token belonging to the current session.
  */
 @RestController
 public class CsrfController {
 
 	@GetMapping(PATH_REST_CSRF)
-	CsrfToken getCsrfToken(CsrfToken token) throws IOException, ServletException {
+	CsrfToken getCsrfToken(CsrfToken token) {
 
 		return token;
 	}
